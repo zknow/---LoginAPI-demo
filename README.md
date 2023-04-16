@@ -2,17 +2,21 @@
 
 ## _Description_
 
-Using : .net core6 WebAPI + EF + MySQL + Redis</br>
-API:</br>
-    - Login</br>
-    - UserName</br>
-    - Logout</br>
+功能:</br>
+    - 登入</br>
+    - 登出</br>
+    - 取得用戶名稱</br></br>
+測試用帳號:</br>
+    - Account : admin</br>
+    - Password : 0000</br>
 
 ## _Tech_
 
-- [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-- [EF Core](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
-- [jwt](https://learn.microsoft.com/zh-tw/dotnet/api/microsoft.aspnetcore.authentication.jwtbearer?view=aspnetcore-7.0)
+- .NET 6
+- EF Core
+- jwt
+- MySQL
+- Redis
 
 ## _Docker_
 
@@ -20,7 +24,7 @@ API:</br>
 docker-compose up -d
 ```
 
-debug mode測試，可以只run db container
+或是debug測試，可以只開db container
 
 ```sh
 // docker build database container
@@ -29,6 +33,8 @@ docker compose -f docker-compose-db.yml up -d
 // run debug mode
 dotnet run
 
+or
+
 // run release mode
 dotnet run --configuration Release  
 ```
@@ -36,9 +42,9 @@ dotnet run --configuration Release
 ## _API Port_
 
 ```sh
-5000:5000
+5000
 ```
 
 ## _API Doc_
 
-[swagger]()
+[swagger](https://github.com/zknow/Unionfly-LoginAPI-demo/blob/master/swagger.json)
