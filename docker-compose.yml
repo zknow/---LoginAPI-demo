@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_URLS: http://+:5000
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - my_network
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - ./dbdata:/var/lib/mssql
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: "0000"
+      MYSQL_ROOT_PASSWORD: "0000"
+    networks:
+      - my_network
+    restart: unless-stopped
+  redis:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    command: redis-server /data/redis.conf
+    volumes:
+      - ./redisdata:/data
+    networks:
+      - my_network
+    restart: unless-stopped
+networks:
+  my_network:
