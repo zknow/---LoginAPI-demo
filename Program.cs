@@ -74,22 +74,15 @@ internal class Program
             context.SetDefaultData();
         }
 
-        // if (app.Environment.IsDevelopment())
-        // {
-        //     app.UseSwagger();
-        //     app.UseSwaggerUI(c =>
-        //     {
-        //         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-        //         c.RoutePrefix = "";
-        //     });
-        // }
-
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
+        if (app.Environment.IsDevelopment())
         {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-            c.RoutePrefix = "";
-        });
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                c.RoutePrefix = "";
+            });
+        }
 
         // 方便測試先關掉 TLS
         // app.UseHttpsRedirection();
